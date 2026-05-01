@@ -6,7 +6,7 @@ A modular hybrid architecture combining:
 - U-Net with Self-Attention for multi-scale processing
 - Variational Autoencoder (VAE) for robust latent representations
 
-Author: [Your Name]
+Author: Mahdi Farmahinifarahani
 License: MIT
 """
 
