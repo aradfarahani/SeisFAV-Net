@@ -10,17 +10,17 @@ $$
 &1: \quad \mathbf{f} \leftarrow \text{Flatten}(F) \quad \triangleright \text{ Convert spatial features to vector } \mathbf{f} \in \mathbb{R}^{128 \cdot N/4} \\
 \\
 &\textbf{LATENT DISTRIBUTION PARAMETER ESTIMATION:} \\
-&2: \quad \mu \leftarrow W_\mu \mathbf{f} + \mathbf{b}_\mu \quad \triangleright \text{ Compute latent mean via FC layer (Equation 10)} \\
-&3: \quad \log \sigma^2 \leftarrow W_\sigma \mathbf{f} + \mathbf{b}_\sigma \quad \triangleright \text{ Compute log-variance via FC layer (Equation 10)} \\
+&2: \quad \mu \leftarrow W_\mu \mathbf{f} + \mathbf{b}_\mu \quad \triangleright \text{ Compute latent mean via FC layer (Equation 9)} \\
+&3: \quad \log \sigma^2 \leftarrow W_\sigma \mathbf{f} + \mathbf{b}_\sigma \quad \triangleright \text{ Compute log-variance via FC layer (Equation 9)} \\
 &4: \quad \sigma \leftarrow \exp(0.5 \cdot \log \sigma^2) \quad \triangleright \text{ Convert log-variance to standard deviation} \\
 \\
 &\textbf{STOCHASTIC LATENT SAMPLING (REPARAMETERIZATION TRICK):} \\
 &5: \quad \epsilon \sim \mathcal{N}(0, I) \quad \triangleright \text{ Sample standard Gaussian noise } \epsilon \in \mathbb{R}^{128} \\
-&6: \quad \mathbf{z} \leftarrow \mu + \sigma \odot \epsilon \quad \triangleright \text{ Reparameterized sampling (Equation 11)} \\
+&6: \quad \mathbf{z} \leftarrow \mu + \sigma \odot \epsilon \quad \triangleright \text{ Reparameterized sampling (Equation 10)} \\
 &7: \quad \quad \triangleright \odot \text{ denotes element-wise multiplication} \\
 \\
 &\textbf{LATENT DECODING AND SPATIAL RECONSTRUCTION:} \\
-&8: \quad \mathbf{f}' \leftarrow W_d \mathbf{z} + \mathbf{b}_d \quad \triangleright \text{ Project latent vector back to feature space (Equation 12)} \\
+&8: \quad \mathbf{f}' \leftarrow W_d \mathbf{z} + \mathbf{b}_d \quad \triangleright \text{ Project latent vector back to feature space (Equation 11)} \\
 &9: \quad F' \leftarrow \text{Reshape}(\mathbf{f}', [128, N/4]) \quad \triangleright \text{ Restore spatial dimensions for decoder pathway} \\
 \\
 &\textbf{KL DIVERGENCE REGULARIZATION:} \\
