@@ -1,8 +1,9 @@
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 # SeisFAV-Net: Denoising Framework Architecture
 
-<img width="850" height="496" alt="SeisFAV-Neسیسسسسسt2 drawio" src="https://github.com/user-attachments/assets/de494935-cc66-4b0a-99de-e41d8bb01d72" />
-
-
+<img width="850" height="496" alt="SeisFAV-Net Architecture" src="https://github.com/user-attachments/assets/de494935-cc66-4b0a-99de-e41d8bb01d72" />
 
 The proposed denoising framework employs an integrated **Fourier Neural Operator Attention U-Net Variational Autoencoder** architecture designed to effectively suppress noise while preserving seismic signal characteristics. The model integrates spectral learning, hierarchical convolutional feature extraction, and probabilistic latent representation within a unified end-to-end framework.
 
@@ -17,3 +18,86 @@ The framework utilizes a **Fourier Neural Operator block** to learn long-range f
 Within the U-Net bottleneck, a **VAE** maps features to a stochastic latent space ($d=128$), enhancing the model's ability to generalize and regularize noise distributions. 
 
 The decoder incorporates **self-attention modules** and **skip connections** to reconstruct high-fidelity seismic signals via residual learning, where the network specifically predicts the noise component for subtraction from the raw record.
+
+---
+
+## Overview
+
+SeisFAV-Net is a deep learning framework that integrates **Fourier Neural Operators (FNO)**, **Attention-augmented U-Net**, and **Variational Autoencoders (VAE)** for effective seismic noise suppression while preserving critical signal characteristics. The architecture combines spectral learning, hierarchical feature extraction, and probabilistic latent representation in a unified end-to-end trainable model.
+
+### Key Features
+
+- **Spectral-Spatial Learning**: FNO block captures long-range frequency dependencies in seismic data
+- **Multi-Scale Representation**: Attention-augmented U-Net encoder-decoder with skip connections
+- **Probabilistic Regularization**: VAE bottleneck ($d=128$) for robust noise modeling and generalization
+- **Residual Denoising**: Network predicts noise component for direct subtraction from raw traces
+- **End-to-End Training**: Single-stage optimization without preprocessing pipelines
+
+---
+
+## Architecture
+
+The proposed framework processes normalized 1D seismic traces $x \in \mathbb{R}^{1 \times N}$ through three integrated components:
+
+### 1. Fourier Neural Operator (FNO) Block
+Learns global frequency-domain representations via spectral convolutions, enabling efficient modeling of long-range temporal dependencies without the quadratic complexity of self-attention.
+
+### 2. Attention U-Net Encoder-Decoder
+- **Encoder**: Hierarchical downsampling with convolutional blocks
+- **Bottleneck**: VAE module maps features to stochastic latent space $\mathcal{Z} \sim \mathcal{N}(\mu, \sigma^2)$
+- **Decoder**: Upsampling with self-attention modules and skip connections for high-fidelity reconstruction
+
+### 3. Residual Learning Strategy
+The network outputs the estimated noise $\hat{n}$, and the denoised signal is obtained via:
+
+$$\hat{s}_{\text{clean}} = x - \hat{n}$$
+
+This formulation simplifies optimization by focusing the model on noise characteristics rather than full signal reconstruction.
+
+---
+
+## Evaluation Metrics
+
+The framework reports standard seismic denoising metrics:
+
+- **Signal-to-Noise Ratio (SNR)**: $\text{SNR} = 10 \log_{10} \frac{\|s\|^2}{\|s - \hat{s}\|^2}$
+- **Peak Signal-to-Noise Ratio (PSNR)**
+- **Structural Similarity Index (SSIM)**
+- **Mean Absolute Error (MAE)**
+
+## Comparison with Prior Work
+
+| Aspect | Others | SeisFAV-Net (Ours) |
+|--------|--------|---------------------|
+| **Spectral Learning** | ❌ None | ✅ FNO block |
+| **Latent Regularization** | ❌ Deterministic | ✅ VAE bottleneck |
+| **Learning Strategy** | Direct reconstruction | Residual noise prediction |
+| **Code Availability** | ❌ Not released | ✅ Open source |
+| **Reproducibility** | Limited architectural details | Full implementation + configs |
+
+---
+
+## License
+
+This project is licensed under the MIT License - see [LICENSE](LICENSE) file for details.
+
+---
+
+## Acknowledgments
+
+- Institute of Geophysics, University of Tehran
+- Department of Earth Sciences, Kharazmi University
+
+---
+
+## Contact
+
+**Mahdi Farmahini Farahani**  
+📧 Email: [aradfarahani@aol.com]  
+🔗 GitHub: [@aradfarahani](https://github.com/aradfarahani)
+
+For questions or collaboration inquiries, please open an issue or contact the corresponding author.
+
+---
+
+**Note**: This implementation is provided for research purposes. For production deployment on critical seismic processing pipelines, additional validation and domain-specific tuning are recommended.
