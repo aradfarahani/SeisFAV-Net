@@ -111,6 +111,10 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file for
 
 For questions or collaboration inquiries, please open an issue or contact the corresponding author.
 
+<img width="2505" height="1267" alt="image" src="https://github.com/user-attachments/assets/b3bae2bf-2370-452f-ac72-7110d3a7123d" />
+(a) Clean test data (b) Noisy test data (c) MSSA-Net (d) MCA SCUNet (e) DDAE (f) BM3D (g) ADDC-Net (h) SeisFAV-Net.
+
+
 ---
 
 **Note**: This implementation is provided for research purposes. For production deployment on critical seismic processing pipelines, additional validation and domain-specific tuning are recommended.
