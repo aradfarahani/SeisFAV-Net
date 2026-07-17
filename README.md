@@ -2,7 +2,7 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
  
 # SeisFAV-Net: Denoising Framework Architecture
- 
+  
 <img width="850" height="496" alt="SeisFAV-Net Architecture" src="https://github.com/user-attachments/assets/de494935-cc66-4b0a-99de-e41d8bb01d72" />
 
 The proposed denoising framework employs an integrated **Fourier Neural Operator Attention U-Net Variational Autoencoder** architecture designed to effectively suppress noise while preserving seismic signal characteristics. The model integrates spectral learning, hierarchical convolutional feature extraction, and probabilistic latent representation within a unified end-to-end framework.
