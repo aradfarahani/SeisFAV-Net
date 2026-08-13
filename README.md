@@ -1,6 +1,6 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
- 
+
 # SeisFAV-Net: Denoising Framework Architecture
   
 <img width="850" height="496" alt="SeisFAV-Net Architecture" src="https://github.com/user-attachments/assets/de494935-cc66-4b0a-99de-e41d8bb01d72" />
