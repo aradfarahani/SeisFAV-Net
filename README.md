@@ -10,7 +10,7 @@ The proposed denoising framework employs an integrated **Fourier Neural Operator
 <img width="2520" height="1263" alt="image" src="https://github.com/user-attachments/assets/a72d68f4-cbae-4f25-8262-1747bb8f940d" />
 (a) Clean test data (b) Noisy test data (c) MSSA-Net (d) MCA SCUNet (e) DDAE (f) BM3D (g) ADDC-Net (h) SeisFAV-Net.
 
-## Input Specification
+## Input Specification 
 
 The input to the network is a normalized one-dimensional seismic trace $x \in \mathbb{R}^{1 \times N}$, where $N$ denotes the number of temporal samples. Prior to training, all traces are standardized using the global mean and standard deviation of the dataset to stabilize optimization and accelerate convergence.
 
